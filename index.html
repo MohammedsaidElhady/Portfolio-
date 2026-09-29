@@ -663,11 +663,11 @@ const CV_DATA_URI = 'data:application/pdf;base64,JVBERi0xLjcNCiW1tbW1DQoxIDAgb2J
 });
 
 /* ===================== LOADER ===================== */
-window.addEventListener('load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
     document.getElementById('loader').classList.add('hide');
     document.getElementById('navbar').classList.add('show');
-  }, 2000);
+  }, 500);
 });
 
 /* ===================== PARTICLE NETWORK ===================== */
@@ -675,8 +675,10 @@ const canvas = document.getElementById('particle-canvas');
 const ctx = canvas.getContext('2d');
 let W, H, particles = [];
 const colors = ['#c9a227', '#3f7d8c', '#d4af37', '#2c4870'];
-const PARTICLE_COUNT = 90;
-const LINK_DIST = 130;
+const IS_MOBILE = window.matchMedia('(max-width: 768px)').matches;
+const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const PARTICLE_COUNT = IS_MOBILE ? 25 : 90;
+const LINK_DIST = IS_MOBILE ? 90 : 130;
 
 function resize(){
   W = canvas.width = window.innerWidth;
@@ -728,12 +730,12 @@ function drawParticles(){
     ctx.beginPath();
     ctx.fillStyle = p.c;
     ctx.shadowColor = p.c;
-    ctx.shadowBlur = 6;
+    ctx.shadowBlur = IS_MOBILE ? 0 : 6;
     ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
     ctx.fill();
   }
   ctx.shadowBlur = 0;
-  requestAnimationFrame(drawParticles);
+  if(!REDUCED_MOTION) requestAnimationFrame(drawParticles);
 }
 drawParticles();
 
@@ -986,6 +988,14 @@ document.querySelectorAll('.nav-links a').forEach(link=>{
   }
   html[lang="ar"] body{line-height:1.8}
   html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3{line-height:1.35}
+  /* ===== Mobile performance: drop heavy blur / blend effects on small screens ===== */
+  @media (max-width: 768px){
+    *, *::before, *::after{ -webkit-backdrop-filter:none !important; backdrop-filter:none !important; }
+    .noise-overlay{ display:none !important; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+  }
 </style>
 <script>
 (function(){
@@ -1140,7 +1150,8 @@ document.querySelectorAll('.nav-links a').forEach(link=>{
     "Download Full CV (PDF)":"تحميل السيرة الذاتية كاملة (PDF)",
     "Email":"البريد الإلكتروني","Phone":"الهاتف","Location":"الموقع","LinkedIn":"لينكدإن",
     "Riyadh, Saudi Arabia":"الرياض، المملكة العربية السعودية",
-    "© 2026 Muhammad Saïd Ismail El Hady · Chief Accountant, Riyadh, Saudi Arabia. All rights reserved.":"© 2026 محمد سعيد إسماعيل الهادي · رئيس الحسابات، الرياض، المملكة العربية السعودية. جميع الحقوق محفوظة."
+    "© 2026 Muhammad Saïd Ismail El Hady":"© 2026 محمد سعيد إسماعيل الهادي",
+    "Chief Accountant, Riyadh, Saudi Arabia. All rights reserved.":"رئيس الحسابات، الرياض، المملكة العربية السعودية. جميع الحقوق محفوظة."
   };
   const TITLE_AR = "محمد سعيد الهادي — رئيس الحسابات | التقارير المالية والامتثال لمعايير IFRS";
 
