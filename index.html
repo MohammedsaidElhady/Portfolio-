@@ -969,5 +969,224 @@ document.querySelectorAll('.nav-links a').forEach(link=>{
   });
 });
 </script>
+<!-- ===== Arabic / English language toggle — paste this block just before </body> in index.html ===== -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap">
+<style>
+  .lang-toggle{
+    display:inline-flex;align-items:center;justify-content:center;gap:6px;
+    height:38px;min-width:54px;padding:0 14px;margin-inline:10px;
+    border:1px solid rgba(255,255,255,.25);border-radius:999px;
+    background:transparent;color:inherit;cursor:pointer;
+    font:700 14px/1 'Tajawal','DM Sans',sans-serif;transition:.2s;
+  }
+  .lang-toggle:hover{border-color:currentColor;transform:translateY(-1px)}
+  html[lang="ar"] body, html[lang="ar"] body *:not(canvas){
+    font-family:'Tajawal','DM Sans',sans-serif !important;
+    letter-spacing:0 !important;           /* letter-spacing breaks Arabic letter joining */
+  }
+  html[lang="ar"] body{line-height:1.8}
+  html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3{line-height:1.35}
+</style>
+<script>
+(function(){
+  const AR = {
+    "LOADING PORTFOLIO":"جارٍ التحميل",
+    "Home":"الرئيسية","Skills":"المهارات","Experience":"الخبرات","Projects":"المشاريع",
+    "Reports":"التقارير","Education":"التعليم","Contact":"تواصل","Download CV":"تحميل السيرة الذاتية",
+    "Available for Senior Finance Opportunities — Riyadh, KSA":"متاح للفرص المالية القيادية — الرياض، المملكة العربية السعودية",
+    "Muhammad Saïd":"محمد سعيد","El Hady":"الهادي","Muhammad El Hady":"محمد الهادي",
+    "Chief Accountant":"رئيس الحسابات",
+    "at Memar Development & Investment Company, with over 12 years of progressive experience in financial reporting, IFRS compliance, cost control, and multi‑entity consolidation across real estate, hospitality, F&B, contracting, and telecommunications.":
+      "في شركة معمار للتطوير والاستثمار، بخبرة متدرجة تتجاوز 12 عامًا في إعداد التقارير المالية، والامتثال للمعايير الدولية (IFRS)، ومراقبة التكاليف، وتوحيد القوائم المالية لعدة كيانات في قطاعات العقار والضيافة والأغذية والمشروبات والمقاولات والاتصالات.",
+    "View Experience":"عرض الخبرات","Get in Touch":"تواصل معي",
+    "Chief Accountant, Memar Group":"رئيس الحسابات، مجموعة معمار",
+    "YEARS EXP.":"سنوات خبرة","SAR 1B+":"+1 مليار ريال","ASSETS LED":"أصول تحت الإدارة","ORGANIZATIONS":"جهات عمل",
+    "PROFESSIONAL EXPERIENCE ACROSS":"خبرة مهنية لدى",
+    "Memar Development & Investment":"معمار للتطوير والاستثمار",
+    "Wusool United Transportation":"وصول المتحدة للنقل",
+    "Al Fahda Group (CONET Co)":"مجموعة الفهدة (كونت)",
+    "Construction Network Contracting":"شبكة الإنشاءات للمقاولات",
+    "Al‑Khair Restaurant Management":"الخير لإدارة المطاعم",
+    "Al Soufan Trading Company":"شركة الصوفان التجارية",
+    "Saudi Telecom Company (STC)":"شركة الاتصالات السعودية (STC)",
+    "Professional Summary":"الملخص المهني",
+    "Senior Chief Accountant with over 12 years of expertise in financial reporting, IFRS compliance, cost analysis, and tax filings, and proficient in ERP systems including Odoo, Foodics, Onyx Pro, and Oracle. I am seeking to leverage my financial management and project cost-control experience to contribute to organizational growth, drawing on a track record of leading multi-entity consolidations, IFRS restatements, and fixed-asset portfolios exceeding SAR 1 billion.":
+      "رئيس حسابات أول بخبرة تزيد على 12 عامًا في إعداد التقارير المالية، والامتثال للمعايير الدولية (IFRS)، وتحليل التكاليف، والإقرارات الضريبية، مع إتقان أنظمة تخطيط الموارد مثل Odoo وFoodics وOnyx Pro وOracle. أسعى لتوظيف خبرتي في الإدارة المالية ومراقبة تكاليف المشاريع للمساهمة في نمو المنشأة، مستندًا إلى سجل حافل في قيادة توحيد القوائم المالية لعدة كيانات، وإعادة عرض القوائم وفق IFRS، وإدارة محافظ أصول ثابتة تتجاوز مليار ريال.",
+    "Expertise":"مجالات الخبرة",
+    "A comprehensive financial and technical skill set, developed over 12+ years across real estate, hospitality, contracting, and telecommunications.":
+      "مجموعة شاملة من المهارات المالية والتقنية اكتسبتها على مدى أكثر من 12 عامًا في قطاعات العقار والضيافة والمقاولات والاتصالات.",
+    "IFRS Compliance & Financial Reporting":"الامتثال لمعايير IFRS والتقارير المالية",
+    "Fixed Assets & Investment Properties":"الأصول الثابتة والعقارات الاستثمارية",
+    "VAT & Zakat Compliance":"الامتثال لضريبة القيمة المضافة والزكاة",
+    "Budgeting & Forecasting":"إعداد الموازنات والتنبؤ",
+    "Internal & External Audit Coordination":"التنسيق مع المراجعة الداخلية والخارجية",
+    "Multi-Entity Financial Consolidation":"توحيد القوائم المالية لعدة كيانات",
+    "Cost Accounting & Project Costing":"محاسبة التكاليف وتكاليف المشاريع",
+    "ERP Systems (Odoo · Oracle · Onyx Pro · Foodics)":"أنظمة ERP (Odoo · Oracle · Onyx Pro · Foodics)",
+    "Advanced Excel & Financial Modeling":"Excel المتقدم والنمذجة المالية",
+    "Cash Flow & Treasury Management":"إدارة التدفقات النقدية والخزينة",
+    "Systems & core competencies":"الأنظمة والكفاءات الأساسية",
+    "VAT Compliance & Filing":"الامتثال والإقرار الضريبي للقيمة المضافة",
+    "Zakat & Corporate Tax":"الزكاة وضريبة الشركات",
+    "Financial Modeling":"النمذجة المالية","Fixed Assets Management":"إدارة الأصول الثابتة",
+    "WIP Reporting":"تقارير الأعمال تحت التنفيذ","Consolidated Reporting":"التقارير الموحدة",
+    "Internal Controls & Policies":"الرقابة الداخلية والسياسات","Cost Variance Analysis":"تحليل انحرافات التكلفة",
+    "Bank Reconciliation":"التسويات البنكية","Chart of Accounts Design":"تصميم دليل الحسابات",
+    "Lease Accounting (ROU)":"محاسبة عقود الإيجار (حق الاستخدام)","Progress Billing":"المستخلصات",
+    "CAPEX & OPEX Management":"إدارة النفقات الرأسمالية والتشغيلية","Contract Accounting":"محاسبة العقود",
+    "Construction Accounting":"محاسبة المقاولات","Real Estate Development Finance":"تمويل التطوير العقاري",
+    "Project Accounting":"محاسبة المشاريع","Feasibility Studies":"دراسات الجدوى","Investment Analysis":"تحليل الاستثمار",
+    "Cash Management & Treasury":"إدارة النقد والخزينة","Financial Planning & KPIs":"التخطيط المالي ومؤشرات الأداء",
+    "SOPs & Accounting Procedures":"الإجراءات التشغيلية والمحاسبية","Month-End & Year-End Closing":"الإقفال الشهري والسنوي",
+    "Procurement & Inventory Accounting":"محاسبة المشتريات والمخزون","Pre-Opening Expenses Accounting":"محاسبة مصروفات ما قبل التشغيل",
+    "Food & Recipe Costing":"تكاليف الأغذية والوصفات","COGS Analysis":"تحليل تكلفة المبيعات",
+    "Manufacturing & Production Costing":"تكاليف التصنيع والإنتاج","Yield & Waste Analysis":"تحليل العائد والهدر",
+    "ERP Data Migration":"ترحيل بيانات أنظمة ERP","Team Leadership & Training":"قيادة الفريق والتدريب",
+    "Career":"المسيرة المهنية",
+    "A progressive career path from foundational accounting roles to group-level financial leadership.":"مسار مهني متدرج من الأدوار المحاسبية الأساسية إلى القيادة المالية على مستوى المجموعة.",
+    "Chief Accountant (Promotion)":"رئيس الحسابات (ترقية)","2026 — Present":"2026 — حتى الآن",
+    "Memar Development and Investment Company · Riyadh, Saudi Arabia":"شركة معمار للتطوير والاستثمار · الرياض، السعودية",
+    "Leading consolidated financial statements across the Group's hospitality subsidiary and all entities, IAS 23 / IFRS 16 restatements, and a unified Chart of Accounts rollout.":
+      "قيادة إعداد القوائم المالية الموحدة لشركة الضيافة التابعة وجميع كيانات المجموعة، وإعادة العرض وفق IAS 23 / IFRS 16، وتطبيق دليل حسابات موحد.",
+    "IFRS Restatement":"إعادة العرض وفق IFRS","Consolidation":"التوحيد","Unified CoA":"دليل حسابات موحد","Audit Liaison":"التنسيق مع المراجعين",
+    "Senior Accountant":"محاسب أول",
+    "Owned Chart of Accounts setup per project, cost centers, budget preparation, liquidity reporting, and led the Fixed Assets & Investment Properties module for assets exceeding SAR 1 billion.":
+      "مسؤول عن إعداد دليل الحسابات لكل مشروع ومراكز التكلفة وإعداد الموازنات وتقارير السيولة، وقيادة وحدة الأصول الثابتة والعقارات الاستثمارية لأصول تتجاوز مليار ريال.",
+    "Fixed Assets (SAR 1B+)":"أصول ثابتة (+1 مليار ريال)","Project Costing":"تكاليف المشاريع","VAT Reporting":"تقارير القيمة المضافة","Budget vs Actual":"الموازنة مقابل الفعلي",
+    "Head Accountant":"رئيس قسم المحاسبة","Jan 2023 — Jul 2023":"يناير 2023 — يوليو 2023",
+    "Wusool United Transportation Co. · Jeddah, Saudi Arabia":"شركة وصول المتحدة للنقل · جدة، السعودية",
+    "Reconciled advances and subsidiary ledgers, recorded nine months of transactions from scratch, built an internal balance sheet, and integrated the subsidiary's trial balance for group consolidation.":
+      "تسوية العُهد والسلف والدفاتر المساعدة، وتسجيل عمليات تسعة أشهر من البداية، وإعداد ميزانية داخلية، ودمج ميزان مراجعة الشركة التابعة لأغراض التوحيد.",
+    "VAT Adjustments":"تسويات القيمة المضافة","Trial Balance":"ميزان المراجعة","System Setup":"تهيئة النظام",
+    "Al Fahda Group (CONET Co) — Real Estate Development & Investment · Khamis Mushait, Saudi Arabia":"مجموعة الفهدة (كونت) — التطوير والاستثمار العقاري · خميس مشيط، السعودية",
+    "Audited journal entries and subsidiary ledgers, verified lease and sales invoices, coordinated bank guarantees, and configured the accounting system for project and cost-center reporting.":
+      "مراجعة القيود اليومية والدفاتر المساعدة، والتحقق من فواتير الإيجار والمبيعات، والتنسيق بشأن الضمانات البنكية، وتهيئة النظام المحاسبي لتقارير المشاريع ومراكز التكلفة.",
+    "Bank Guarantees":"الضمانات البنكية","VAT Returns":"إقرارات القيمة المضافة","Lease Verification":"التحقق من عقود الإيجار","Payroll Review":"مراجعة الرواتب",
+    "General / Senior Accountant":"محاسب عام / أول",
+    "Construction Network Contracting Company · Khamis Mushait, Saudi Arabia":"شركة شبكة الإنشاءات للمقاولات · خميس مشيط، السعودية",
+    "Managed project petty cash and cost-center allocation, supplier reconciliations, bank reconciliations, VAT/Zakat filings, and Royal Commission maintenance project reporting in Jazan.":
+      "إدارة العُهد النقدية للمشاريع وتوزيع مراكز التكلفة، ومطابقات الموردين والبنوك، وإقرارات القيمة المضافة والزكاة، وتقارير مشروع صيانة الهيئة الملكية في جازان.",
+    "Petty Cash Control":"الرقابة على العُهد النقدية","Inventory Mgmt":"إدارة المخزون","Bid Bonds":"ضمانات العطاءات","Zakat Filing":"الإقرار الزكوي",
+    "Accounts Manager (Part-time)":"مدير حسابات (دوام جزئي)",
+    "Al‑Khair Restaurant Management Company · Abha, Saudi Arabia":"شركة الخير لإدارة المطاعم · أبها، السعودية",
+    "Configured Onyx Pro ERP from the ground up — Chart of Accounts, customers, suppliers, assets, and standard costing — achieving a 5% reduction in waste through cost-variance analysis.":
+      "تهيئة نظام Onyx Pro من الصفر — دليل الحسابات والعملاء والموردين والأصول والتكاليف المعيارية — وتحقيق خفض في الهدر بنسبة 5% من خلال تحليل انحرافات التكلفة.",
+    "Onyx Pro Setup":"تهيئة Onyx Pro","Standard Costing":"التكاليف المعيارية","5% Waste Reduction":"خفض الهدر 5%","Team Training":"تدريب الفريق",
+    "Senior Financial Accountant (Part-time)":"محاسب مالي أول (دوام جزئي)",
+    "Al Soufan Trading Company · Khamis Mushait, Saudi Arabia":"شركة الصوفان التجارية · خميس مشيط، السعودية",
+    "Reconciled daily POS and wholesale sales against bank deposits, tracked supplier discounts, and produced profitability and inventory-turnover reports for management.":
+      "مطابقة مبيعات نقاط البيع والجملة اليومية مع الإيداعات البنكية، ومتابعة خصومات الموردين، وإعداد تقارير الربحية ودوران المخزون للإدارة.",
+    "POS Reconciliation":"مطابقة نقاط البيع","Profitability Reports":"تقارير الربحية","Inventory Turnover":"دوران المخزون",
+    "General Accountant":"محاسب عام",
+    "Saudi Telecom Company (STC) · Rabigh, Saudi Arabia":"شركة الاتصالات السعودية (STC) · رابغ، السعودية",
+    "Prepared daily sales and inventory reports on Oracle, managed cash deposits, and flagged stagnant vs. fast-moving stock to improve branch sales strategy.":
+      "إعداد تقارير المبيعات والمخزون اليومية على Oracle، وإدارة الإيداعات النقدية، ورصد الأصناف الراكدة وسريعة الحركة لتحسين استراتيجية مبيعات الفرع.",
+    "Oracle ERP":"Oracle ERP","Daily Sales Reporting":"تقارير المبيعات اليومية","Inventory Analysis":"تحليل المخزون",
+    "Customer Service & Sales":"خدمة العملاء والمبيعات","Mobinil Mobile Shop · Zagazig, Egypt":"متجر موبينيل · الزقازيق، مصر",
+    "Handled in-branch sales and recharge services while completing studies, building the customer-facing foundations later applied to accounts and vendor relationships.":
+      "تولي المبيعات وخدمات الشحن داخل الفرع أثناء الدراسة، مما أسس لمهارات التعامل مع العملاء التي طُبقت لاحقًا في إدارة الحسابات والعلاقة مع الموردين.",
+    "Customer Service":"خدمة العملاء","Retail Sales":"مبيعات التجزئة",
+    "Key Initiatives":"أبرز المبادرات",
+    "Selected initiatives reflecting measurable improvements in reporting accuracy, compliance, and cost control.":"مبادرات مختارة تعكس تحسينات ملموسة في دقة التقارير والامتثال ومراقبة التكاليف.",
+    "Group-Wide Unified Chart of Accounts":"دليل حسابات موحد على مستوى المجموعة",
+    "Designed and rolled out one CoA across all Memar Group entities to streamline reporting and future consolidation.":"تصميم وتطبيق دليل حسابات واحد لجميع كيانات مجموعة معمار لتبسيط التقارير وتسهيل التوحيد مستقبلًا.",
+    "CoA Design":"تصميم دليل الحسابات","Multi-Entity":"متعدد الكيانات",
+    "Hospitality Expense Reclassification":"إعادة تبويب مصروفات الضيافة",
+    "Led a full reclassification of expense accounts across hotels and subsidiaries for consistency and audit-ready accuracy.":"قيادة إعادة تبويب شاملة لحسابات المصروفات في الفنادق والشركات التابعة لتحقيق الاتساق والجاهزية للمراجعة.",
+    "Reclassification":"إعادة التبويب","Hospitality":"الضيافة","Audit-Ready":"جاهز للمراجعة",
+    "IAS 23 & IFRS 16 Restatement":"إعادة العرض وفق IAS 23 وIFRS 16",
+    "Recalculated borrowing costs and right-of-use lease liabilities, driving prior-period adjustments to full IFRS compliance.":"إعادة احتساب تكاليف الاقتراض والتزامات عقود الإيجار (حق الاستخدام)، وإجراء تسويات الفترات السابقة لتحقيق الامتثال الكامل لـ IFRS.",
+    "Restatement":"إعادة العرض",
+    "Fixed Assets Module — SAR 1B+":"وحدة الأصول الثابتة — +1 مليار ريال",
+    "Owned capitalization, classification, depreciation schedules and disposals for an asset base exceeding SAR 1 billion.":"المسؤولية عن الرسملة والتصنيف وجداول الإهلاك والاستبعادات لقاعدة أصول تتجاوز مليار ريال.",
+    "Fixed Assets":"الأصول الثابتة","CAPEX":"النفقات الرأسمالية","Depreciation":"الإهلاك",
+    "Onyx Pro ERP Rollout":"تطبيق نظام Onyx Pro",
+    "Built a restaurant-management ERP from zero — accounts, inventory, standard costing — cutting waste by 5%.":"بناء نظام ERP لإدارة المطاعم من الصفر — الحسابات والمخزون والتكاليف المعيارية — مع خفض الهدر بنسبة 5%.",
+    "ERP Migration":"ترحيل ERP","Costing":"التكاليف",
+    "Multi-Subsidiary Consolidation Automation":"أتمتة التوحيد لعدة شركات تابعة",
+    "Standardized account mapping and reporting structures to automate consolidation across the parent company and subsidiaries.":"توحيد ربط الحسابات وهياكل التقارير لأتمتة التوحيد بين الشركة الأم والشركات التابعة.",
+    "Automation":"الأتمتة","Mapping":"ربط الحسابات","Reporting":"التقارير",
+    "Reports & Systems":"التقارير والأنظمة",
+    "Power BI reporting, financial modeling, and a self-service portal for the Finance Department.":"تقارير Power BI، والنمذجة المالية، وبوابة خدمة ذاتية للإدارة المالية.",
+    "A sample of dashboards I designed and built in Power BI for project cost control, payables/receivables monitoring, and asset revaluation — plus a SharePoint site I set up so the Finance team can reach live, auto-refreshing reports in one place. Figures are masked for confidentiality.":
+      "نماذج من لوحات المعلومات التي صممتها وبنيتها على Power BI لمراقبة تكاليف المشاريع ومتابعة الذمم الدائنة والمدينة وإعادة تقييم الأصول — إضافة إلى موقع SharePoint أنشأته ليصل فريق المالية إلى التقارير المحدّثة تلقائيًا من مكان واحد. الأرقام مخفية حفاظًا على السرية.",
+    "Project Cost & Budget Control (Power BI)":"مراقبة تكاليف وموازنات المشاريع (Power BI)",
+    "A multi-project dashboard tracking additions, total cost, cash-out and budget by project, with year/quarter slicers and a cost-classification breakdown for capitalized assets vs. financing costs.":
+      "لوحة متعددة المشاريع تتابع الإضافات وإجمالي التكلفة والمدفوعات والموازنة لكل مشروع، مع فلاتر للسنة والربع وتصنيف للتكاليف بين الأصول المرسملة وتكاليف التمويل.",
+    "CAPEX Classification":"تصنيف النفقات الرأسمالية",
+    "Payables & Receivables Monitor (Power BI)":"متابعة الذمم الدائنة والمدينة (Power BI)",
+    "Live view of AP/AR balances by classification, top debit and credit accounts, and monthly movement — built to replace manual reconciliation sheets with a single refreshed source of truth.":
+      "عرض مباشر لأرصدة الدائنين والمدينين حسب التصنيف، وأعلى الحسابات المدينة والدائنة، والحركة الشهرية — لاستبدال جداول المطابقة اليدوية بمصدر واحد محدّث.",
+    "AP/AR":"الدائنون/المدينون","Reconciliation":"المطابقة","Vendor Balances":"أرصدة الموردين",
+    "Company Asset Revaluation Report (Power BI)":"تقرير إعادة تقييم أصول الشركة (Power BI)",
+    "Financial modeling for the real-estate portfolio — historical cost, accumulated depreciation, net book value and current valuation per property, with period-over-period variance tracking.":
+      "نمذجة مالية للمحفظة العقارية — التكلفة التاريخية ومجمع الإهلاك وصافي القيمة الدفترية والتقييم الحالي لكل عقار، مع متابعة الفروقات بين الفترات.",
+    "Asset Valuation":"تقييم الأصول","Real Estate":"العقار",
+    "Finance Department Portal (SharePoint)":"بوابة الإدارة المالية (SharePoint)",
+    "Built a SharePoint site for the Finance Department so the team can reach financial statements, dashboards and the reporting library from one place — linked directly to the live Power BI reports for instant updates.":
+      "إنشاء موقع SharePoint للإدارة المالية ليصل الفريق إلى القوائم المالية ولوحات المعلومات ومكتبة التقارير من مكان واحد — مرتبط مباشرة بتقارير Power BI لتحديث فوري.",
+    "Power BI Integration":"التكامل مع Power BI","Self-Service Reporting":"تقارير الخدمة الذاتية",
+    "Education & Certifications":"التعليم والشهادات",
+    "Bachelor of Accounting":"بكالوريوس المحاسبة",
+    "University of Zagazig — Egypt · 2009–2013":"جامعة الزقازيق — مصر · 2009–2013",
+    "GPA 72%":"التقدير 72%","High School Diploma":"شهادة الثانوية العامة",
+    "El Nagah Secondary School — Zagazig, Egypt":"مدرسة النجاح الثانوية — الزقازيق، مصر","GPA 96.3%":"المجموع 96.3%",
+    "Professional Certifications":"الشهادات المهنية",
+    "Certified Accounting Manager — Ulti Academy (#142427)":"مدير محاسبة معتمد — أكاديمية Ulti (#142427)",
+    "Certified Financial Track — Ulti Academy (#128039)":"المسار المالي المعتمد — أكاديمية Ulti (#128039)",
+    "FMAA — In Progress, IMA":"FMAA — قيد الدراسة، IMA",
+    "Languages":"اللغات","Arabic":"العربية","Mother tongue":"اللغة الأم","English":"الإنجليزية","Intermediate":"متوسط","Turkish":"التركية","Beginner":"مبتدئ",
+    "I welcome the opportunity to discuss how I can contribute to your finance function.":"يسعدني التواصل لمناقشة كيف يمكنني الإسهام في إدارتكم المالية.",
+    "Download Full CV (PDF)":"تحميل السيرة الذاتية كاملة (PDF)",
+    "Email":"البريد الإلكتروني","Phone":"الهاتف","Location":"الموقع","LinkedIn":"لينكدإن",
+    "Riyadh, Saudi Arabia":"الرياض، المملكة العربية السعودية",
+    "© 2026 Muhammad Saïd Ismail El Hady · Chief Accountant, Riyadh, Saudi Arabia. All rights reserved.":"© 2026 محمد سعيد إسماعيل الهادي · رئيس الحسابات، الرياض، المملكة العربية السعودية. جميع الحقوق محفوظة."
+  };
+  const TITLE_AR = "محمد سعيد الهادي — رئيس الحسابات | التقارير المالية والامتثال لمعايير IFRS";
+
+  const norm = s => s.replace(/\s+/g,' ').trim();
+  const originals = new Map();         // text node -> original English value
+  const origTitle = document.title;
+
+  function collect(root){
+    const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let n;
+    while ((n = w.nextNode())) {
+      if (n.parentElement.closest('script,style,.lang-toggle')) continue;
+      if (!originals.has(n) && AR[norm(n.nodeValue)]) originals.set(n, n.nodeValue);
+    }
+  }
+
+  function apply(lang){
+    collect(document.body);
+    originals.forEach((en, node) => {
+      if (lang === 'ar') {
+        const lead = en.match(/^\s*/)[0], trail = en.match(/\s*$/)[0];
+        node.nodeValue = lead + AR[norm(en)] + trail;
+      } else node.nodeValue = en;
+    });
+    document.documentElement.lang = lang;
+    document.documentElement.dir  = lang === 'ar' ? 'rtl' : 'ltr';
+    document.title = lang === 'ar' ? TITLE_AR : origTitle;
+    btn.textContent = lang === 'ar' ? 'EN' : 'ع';
+    btn.setAttribute('aria-label', lang === 'ar' ? 'Switch to English' : 'التبديل إلى العربية');
+    try { localStorage.setItem('lang', lang); } catch(e){}
+  }
+
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'lang-toggle';
+  const cta = document.querySelector('#navbar .nav-cta');
+  if (cta) cta.parentNode.insertBefore(btn, cta);
+  else document.querySelector('#navbar, nav, body').appendChild(btn);
+  btn.addEventListener('click', () => apply(document.documentElement.lang === 'ar' ? 'en' : 'ar'));
+
+  let saved = 'en';
+  try { saved = localStorage.getItem('lang') || 'en'; } catch(e){}
+  if (new URLSearchParams(location.search).get('lang') === 'ar') saved = 'ar';
+  apply(saved);
+})();
+</script>
+<!-- ===== end of language toggle ===== -->
 </body>
 </html>
